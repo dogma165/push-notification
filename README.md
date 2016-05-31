@@ -5,7 +5,7 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/d60e8eea-aea1-4739-8ce0-a3c3c12c6ccf/mini.png)](https://insight.sensiolabs.com/projects/d60e8eea-aea1-4739-8ce0-a3c3c12c6ccf)
 
 ## Installation
-`composer require minishlink/web-push`
+`composer require dogma165/web-push`
 
 ## Usage
 WebPush can be used to send notifications to endpoints which server delivers web push notifications as described in 
