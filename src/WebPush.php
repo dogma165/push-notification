@@ -61,7 +61,7 @@ class WebPush
         $client = isset($client) ? $client : new MultiCurl();
         $client->setTimeout($timeout);
         $this->browser = new Browser($client);
-        
+
         $this->nativePayloadEncryptionSupport = version_compare(phpversion(), '7.1', '>=');
     }
 
@@ -98,21 +98,9 @@ class WebPush
 
         if ($flush) {
             $res = $this->flush();
-
-            // if there has been a problem with at least one notification
-            if (is_array($res)) {
-                // if there was only one notification, return the information directly
-                if (count($res) === 1) {
-                    return $res[0];
-                }
-
-                return $res;
-            }
-
-            return true;
+            return $res;
         }
 
-        return true;
     }
 
     /**
@@ -151,34 +139,18 @@ class WebPush
         }
 
         /** @var Response|null $response */
-        $return = array();
-        $completeSuccess = true;
+        //$return = array();
         foreach ($responses as $response) {
-            if (!isset($response)) {
-                $return[] = array(
-                    'success' => false,
-                );
-
-                $completeSuccess = false;
-            } elseif (!$response->isSuccessful()) {
-                $return[] = array(
-                    'success' => false,
-                    'statusCode' => $response->getStatusCode(),
-                    'headers' => $response->getHeaders(),
-                );
-
-                $completeSuccess = false;
-            } else {
-                $return[] = array(
-                    'success' => true,
-                );
-            }
+            $return = [
+                'statusCode' => $response->getStatusCode(),
+                'headers' => $response->getHeaders(),
+            ];
         }
 
         // reset queue
         $this->notificationsByServerType = null;
 
-        return $completeSuccess ? true : $return;
+        return $return;
     }
 
     private function prepareAndSend(array $notifications, $serverType)
