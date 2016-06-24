@@ -27,4 +27,5 @@
       "Minishlink\\WebPush\\" : "src"
     }
   }
+  "minimum-stability": "dev"
 }
