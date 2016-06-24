@@ -11,14 +11,6 @@
             "homepage": "https://github.com/dogma165"
         }
     ],
-    
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "http://github.com/dogma165/push-notification"
-        }
-    ],
-    
     "require": {
         "php": ">=5.4",
         "kriswallsmith/buzz": ">=0.6",
