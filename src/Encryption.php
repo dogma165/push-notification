@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Minishlink\WebPush;
+namespace Vda\WebPushNotification;
 
 use Base64Url\Base64Url;
 use Mdanter\Ecc\EccFactory;

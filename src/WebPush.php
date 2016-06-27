@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Minishlink\WebPush;
+namespace Vda\WebPushNotification;
 
 use Buzz\Browser;
 use Buzz\Client\AbstractClient;

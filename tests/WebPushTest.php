@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-use Minishlink\WebPush\WebPush;
+use Vda\WebPushNotification\WebPush;
 
 class WebPushTest extends PHPUnit_Framework_TestCase
 {
@@ -32,7 +32,7 @@ class WebPushTest extends PHPUnit_Framework_TestCase
             $this->markTestSkipped('This test does not run on Travis.');
         }
     }
-    
+
     public static function setUpBeforeClass()
     {
         self::$endpoints = array(
