@@ -84,7 +84,7 @@ zones, and if they don't several hours will suffice.
 ```php
 <?php
 
-use Minishlink\WebPush\WebPush;
+use Vda\WebPushNotification\WebPush;
 
 $webPush = new WebPush(); // default TTL is 4 weeks
 // send some important notifications...
