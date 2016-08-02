@@ -20,7 +20,6 @@ use Buzz\Message\Response;
 class WebPush
 {
     const GCM_URL = 'https://android.googleapis.com/gcm/send';
-    const TEMP_GCM_URL = 'https://gcm-http.googleapis.com/gcm';
 
     /** @var Browser */
     protected $browser;
@@ -108,7 +107,7 @@ class WebPush
      *
      * @return array|bool If there are no errors, return true.
      *                    If there were no notifications in the queue, return false.
-     *                    Else return an array of information for each notification sent (success, statusCode, headers).
+     *                    Else return an array of information for each notification sent (success, statusCode, headers, content).
      *
      * @throws \ErrorException
      */
@@ -128,7 +127,7 @@ class WebPush
         // for each endpoint server type
         $responses = array();
         foreach ($this->notificationsByServerType as $serverType => $notifications) {
-            $responses += $this->prepareAndSend($notifications, $serverType);
+            $responses = array_merge($responses, $this->prepareAndSend($notifications, $serverType));
         }
 
         // if multi curl, flush
@@ -186,9 +185,6 @@ class WebPush
             }
 
             if ($serverType === 'GCM') {
-                // FUTURE remove when Chrome servers are all up-to-date
-                $endpoint = str_replace(self::GCM_URL, self::TEMP_GCM_URL, $endpoint);
-
                 $headers['Authorization'] = 'key='.$this->apiKeys['GCM'];
             }
 
